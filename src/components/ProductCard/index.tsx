@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { IProduct } from "../../types/product";
 import { Link } from "react-router-dom";
 import { ShoppingCartContext } from "../../context";
+import imagenDefecto from "../../assets/ProductNotAvalible.webp";
 
 
 function ProductCard({images, title, price, id}: IProduct) {
@@ -16,7 +17,12 @@ function ProductCard({images, title, price, id}: IProduct) {
 
         <div className=" p-4 rounded-lg  mb-10 text-center">
             <div className="product-image mb-4">
-                <img src={images[0]} alt="Imagen de Prueba" className="rounded-xl w-full h-auto object-contain mx-auto"/>
+                <img 
+                    src={images[0]} 
+                    alt="Imagen de Prueba" 
+                    className="rounded-xl w-full h-auto object-contain mx-auto"
+                    onError={(e) => {e.target.src = imagenDefecto}} //Funciona pero evaluar que sea public la imagen y Tipos
+                />
             </div>
 
             <div className="product-info">
