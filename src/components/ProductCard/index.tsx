@@ -21,7 +21,7 @@ function ProductCard({images, title, price, id}: IProduct) {
                     src={images[0]} 
                     alt="Imagen de Prueba" 
                     className="rounded-xl w-full h-auto object-contain mx-auto"
-                    onError={(e) => {e.target.src = imagenDefecto}} //Funciona pero evaluar que sea public la imagen y Tipos
+                    onError={(e) => {e.currentTarget.src = imagenDefecto}} //Funciona pero evaluar que sea public
                 />
             </div>
 

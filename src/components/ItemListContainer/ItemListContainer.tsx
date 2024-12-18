@@ -18,7 +18,7 @@ function ItemListContainer() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="grid grid-cols-4 gap-4 ">
+    <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4">
       {data?.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}

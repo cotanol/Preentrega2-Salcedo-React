@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { API_URL } from "../utils";
 import { ShoppingCartContext } from "../context";
 import { useFetch } from "../hooks/useFetch";
 import { IProduct } from "../types/product";
+import imagenDefecto from "../assets/ProductNotAvalible.webp";
 
 export default function ProductDetailPage () {
 
@@ -25,18 +26,19 @@ export default function ProductDetailPage () {
 
     return (
         <div className="max-w-7xl mx-auto p-6 ">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-52">
+            <div className="flex flex-col lg:flex-row lg:items-center items-start gap-9 lg:gap-32">
                 {/* Imagen a la izquierda */}
-                <div className="w-full md:w-1/2 flex justify-center">
+                <div className="w-full lg:w-1/2 flex justify-center">
                     <img
                         src={data?.images[0]}
                         alt={data?.title}
                         className="w-full h-auto rounded-lg shadow-lg"
+                        onError={(e) => {e.currentTarget.src = imagenDefecto}}
                     />
                 </div>
         
                 {/* Detalles a la derecha */}
-                <div className="w-full md:w-1/2">
+                <div className="w-full lg:w-1/2">
                     <h1 className="text-4xl font-bold mb-4 text-gray-800">
                         {data?.title}
                     </h1>
@@ -50,18 +52,12 @@ export default function ProductDetailPage () {
                     {/* Boton Agregar al Carrito */}
                     <button
                         onClick={handleClick}
-                        className="bg-black hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg mb-6 transition duration-300"
+                        className="bg-black hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg mb-6 transition duration-300 w-full"
                     >
                         Agregar al carrito
                     </button>
         
-                    {/* Volver al Inicio */}
-                    <Link
-                        to="/"
-                        className="text-black hover:underline text-lg ml-12"
-                    >
-                        Volver al Inicio
-                    </Link>
+                    
                 </div>
             </div>
         </div>
